@@ -25,12 +25,12 @@ const Location = () => {
     return (
         <>
             <Weather 
-                weather={weather}
+                weather={weather ? weather : ''}
                 color='primary'
             ></Weather>
 
             <Forecast
-                city={weather.name}
+                city={weather.name ? weather.name : ''}
             ></Forecast>
             
             <CardGroup>

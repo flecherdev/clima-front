@@ -16,7 +16,7 @@ const Forecast = (props) => {
         <>
             <h3>{props.city}</h3>
             <CardGroup>
-                {listWeather &&
+                {listWeather.list &&
                     listWeather.list.map( (weather, i) => (
                         <Weather
                             key={i}
