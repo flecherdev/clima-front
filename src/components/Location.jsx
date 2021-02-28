@@ -1,29 +1,47 @@
 import React, { useState, useEffect } from 'react'
 import Weather from './Weather'
+import Forecast from './Forecast';
+import CardGroup from 'react-bootstrap/CardGroup'
+import Current from './Current'
 
 const Location = () => {    
     const URL = 'http://localhost:3001/v1/location'
-
     const [weather, setWeather] = useState([])
+    const citys = [
+        'Montreal',
+        'Florida',
+        'Montevideo',
+        'Rio De Janeiro',
+        'Playa Grande'
+    ]
 
-    useEffect( async () => {
+
+    useEffect( () => {
         fetch(URL)
             .then( response => response.json())
             .then( weather => setWeather(weather.data))
-
-        // const fetchData = async () => {
-        //     const result = await axios(URL);
-        //     const data = await result.json();
-        //     setWeather(data.data);
-        // };
-        // fetchData();
-    
     }, [])
 
-    return <Weather 
-        weather={weather}
-        color=''
-    ></Weather>
+    return (
+        <>
+            <Weather 
+                weather={weather}
+                color='primary'
+            ></Weather>
+
+            <Forecast
+                city={weather.name}
+            ></Forecast>
+            
+            <CardGroup>
+                {citys.map ( city => (
+                    <Current
+                        city={city}
+                    ></Current>
+                ))}
+            </CardGroup>
+        </>
+    )
 }
 
 export default Location
