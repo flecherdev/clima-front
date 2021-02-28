@@ -3,8 +3,6 @@ import Card from 'react-bootstrap/Card'
 import moment from 'moment'
 
 const Weather = (props) => {
-    console.log('estoy en weather')
-    console.log(props.weather)
     return (
         <Card 
             bg={props.color}
